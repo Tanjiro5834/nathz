@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Keep Replica</title>
+    <style>
+        .wrapper {
+            display: grid;
+            grid-template-areas:
+                "header header header header header"
+                "sidebar content content content content"
+                "sidebar content content content content"
+                "sidebar content content content content"
+                "footer footer footer footer footer";
+            grid-gap: 10px;
+            grid-template-columns: 0fr 1fr;
+        }
+
+        header {
+            grid-area: header;
+            background-color: #ffffff;
+            padding: 1px;
+        }
+
+        sidebar {
+            grid-area: sidebar;
+            background-color: #f0f0f0;
+            padding: 15px;
+        }
+
+        newnote {
+        	grid-area: newnote;
+            background-color: #fff;
+            padding: 20px;
+			text-align: center;
+			justify-content: center;
+        }
+
+        content {
+            grid-area: content;
+            background-color: #fff;
+            padding: 60px;
+        }
+
+	a:link {
+		color: black;
+		text-decoration: none;
+	}
+
+	a:visited {
+		color: black;
+		text-decoration: none;
+	}
+       
+    </style>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+	<div class="wrapper">
+        <header>
+	<div class="wrapper2">
+		<div class="topnav">
+			
+				<img src="img/menu icon.png" alt="menu" width="60px" height="60px" id="menu-btn">
+				<a href="index.html"><img src="img/icn.png" alt="icon" width="55px" height="60px"></a>
+				<a href="index.html"><img src="img/keep.png" alt="keep" width="60px" height="60px"></a>
+			
+			<div class="search">
+				<img src="img/search.png" alt="" width="25px" height="25px">
+				<input type="text" placeholder="Search" id="searchInput">
+			</div>
+		</div>
+			<div class="right">
+				<div>
+					<a href="index.html"><img src="img/refresh.png" alt="refresh" width="60px" height="60px"></a>
+					<a href="index.html"><img src="img/chngtolistview.png" alt="listview" width="60px" height="60px"></a>
+					<a href="index.html"><img src="img/settings.png" alt="settings" width="60px" height="60px"></a>
+				</div>
+			</div>
+	</div>
+        </header>
+        <div class="sidebar">
+        	
+				<a href="index.html"><div class="sidebar_div"><img src="img/bulb.png" alt="notes" width="20px" height="20px" class="menu-img"><span>Notes</span></div></a>
+				
+				<a href="reminders.html"><div class="sidebar_div"><img src="img/bell.png" alt="reminders" width="20px" height="20px" class="menu-img"><span>Reminders</span></div></a>
+				
+				<a href="labels.html"><div class="sidebar_div"><img src="img/pen.png" alt="editlabels" width="20px" height="20px" class="menu-img"><span>Edit Labels</span></div></a>
+				
+				<a href="archive.html"><div class="sidebar_div"><img src="img/archive.png" alt="archive" width="20px" height="20px" class="menu-img"><span>Archive</span></div></a>
+				
+				<a href="trash.html"><div class="sidebar_div"><img src="img/trash.png" alt="trash" width="20px" height="20px" class="menu-img"><span>Trash</span></div></a>
+				
+			
+        </div>
+        <div class="content">
+        	<table>
+                <div class="newNote">
+                    <input type="text" id="noteInput" placeholder="Create new label" style="width: 189%; height:auto;">
+                </div>
+                <div id="notesContainer"></div>
+		    </table>
+        </div>
+    </div>
+
+</body>
+    <script>
+        const noteInput = document.getElementById('noteInput');
+        const notesContainer = document.getElementById('notesContainer');
+        const menu = document.getElementById('menu-btn');
+        const sidebar = document.getElementsByClassName('sidebar_div')
+        const sidebar_label = document.getElementsByTagName("span");
+
+        let currentRow, rowCount = 1;
+        noteInput.addEventListener('keypress', function(e){
+            if(e.key === 'Enter'){
+                const noteText = noteInput.value.trim();
+                if(noteText !== ''){
+                    const noteBox = document.createElement('div');
+                    noteBox.classList.add('note-box');
+                    const noteContent = document.createElement('p');
+                    noteContent.textContent = noteText;            
+                    noteBox.appendChild(noteContent);
+
+                    if(noteText.length >= 30){
+                        noteBox.classList.add('small');
+                    }
+
+                    if(!currentRow || currentRow.childElementCount === 2){
+                        currentRow = document.createElement('div');
+                        currentRow.classList.add('note-row');
+                        notesContainer.appendChild(currentRow);
+                        rowCount++;
+                    }
+                    currentRow.appendChild(noteBox);
+                    noteInput.value = '';
+                }
+            }
+        });
+    </script>
+</html>
