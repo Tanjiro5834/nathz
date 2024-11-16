@@ -27,6 +27,7 @@ I'm a 3rd year Computer Science student at STI College and I'm on my way to my d
 ### Java Projects
 - **Library Management System**: Comprehensive system for managing books, members, and transactions.
 - **Café Inventory System**: Includes user identification and role-based access control.
+- **Employee Management System**: A system were admins can perform CRUD operations, and users can manage their accounts and other tasks such as setting schedule etc.
 - You can further check the folders for some of my Java projects, though some of it are not finished yet so if time comes, I'll resume it
 
 ### C and C++ Projects
