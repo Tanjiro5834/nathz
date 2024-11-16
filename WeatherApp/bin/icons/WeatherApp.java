@@ -9,7 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class WeatherApp extends JFrame{
-	private JTextField cityInput;
+    private JTextField cityInput;
     private JLabel weatherLabel;
     private JLabel tempLabel;
     private JLabel iconLabel;
@@ -75,7 +75,7 @@ public class WeatherApp extends JFrame{
     	
     	try{
     		@SuppressWarnings("deprecation")
-			URL url = new URL(apiUrl);
+		URL url = new URL(apiUrl);
     		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
     		conn.setRequestMethod("GET");
     		BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -88,7 +88,7 @@ public class WeatherApp extends JFrame{
     		reader.close();
     		conn.disconnect();
     		
-    		JSONObject json = new JSONObject(content.toString());
+    	    JSONObject json = new JSONObject(content.toString());
             String weather = json.getJSONArray("weather").getJSONObject(0).getString("main");
             double temp = json.getJSONObject("main").getDouble("temp");
 
@@ -98,7 +98,7 @@ public class WeatherApp extends JFrame{
             updateIcon(weather);
     		
     	}catch(Exception e){
-    		e.getMessage();
+    	    e.getMessage();
     	}
     }
     
