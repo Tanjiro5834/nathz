@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $price = $_POST['price'];
     
         $stmt = $conn->prepare("INSERT INTO product (product_name, quantity, price) VALUES (?, ?, ?)");
-        $stmt->bind_param("sid", $productname, $quantity, $price); // "sid" means string, integer, double
+        $stmt->bind_param("sid", $productname, $quantity, $price);
     
         if ($stmt->execute()) {
             echo "Product added successfully";
