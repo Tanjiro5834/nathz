@@ -1,0 +1,1 @@
+This is just a simple console-based program for an inventory system, it allows for adding, deleting, viewing all products, updating, and saving the data to a txt file.
